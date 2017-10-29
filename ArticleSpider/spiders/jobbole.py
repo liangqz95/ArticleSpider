@@ -6,8 +6,8 @@ from scrapy.http import Request
 from urllib import parse
 from scrapy.loader import ItemLoader
 
-from ArticleSpider.items import JobBoleArticleItem, ArticleItemLoader
-
+from ArticleSpider.items import JobBoleArticleItem
+from scrapy.loader import ItemLoader
 from ArticleSpider.utils.common import get_md5
 from selenium import webdriver
 from scrapy.xlib.pydispatch import dispatcher
@@ -126,7 +126,7 @@ class JobboleSpider(scrapy.Spider):
 
         #通过item loader加载item
         front_image_url = response.meta.get("front_image_url", "")  # 文章封面图
-        item_loader = ArticleItemLoader(item=JobBoleArticleItem(), response=response)
+        item_loader = ItemLoader(item=JobBoleArticleItem(), response=response)
         item_loader.add_css("title", ".entry-header h1::text")
         item_loader.add_value("url", response.url)
         item_loader.add_value("url_object_id", get_md5(response.url))
