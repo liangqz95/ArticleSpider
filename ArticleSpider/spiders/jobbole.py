@@ -5,8 +5,10 @@ import datetime
 from scrapy.http import Request
 from urllib import parse
 from scrapy.loader import ItemLoader
+
 from ArticleSpider.items import JobBoleArticleItem
 from scrapy.loader import ItemLoader
+
 from ArticleSpider.utils.common import get_md5
 from selenium import webdriver
 from scrapy.xlib.pydispatch import dispatcher
